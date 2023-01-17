@@ -3,6 +3,7 @@ cache/
 out/
 node_modules/
 artifacts/
+typechaint-types/
 
 # Ignores development broadcast logs
 !/broadcast

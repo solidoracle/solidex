@@ -1,11 +1,11 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const Dwin = await ethers.getContractFactory("Dwin");
-  const dwin = await Dwin.deploy();
-  await dwin.deployed();
+  const Solidex = await ethers.getContractFactory("Solidex");
+  const solidex = await Solidex.deploy();
+  await solidex.deployed();
 
-  console.log("dwin deployed to: ", dwin.address);
+  console.log("dwin deployed to: ", solidex.address);
 }
 
 main()

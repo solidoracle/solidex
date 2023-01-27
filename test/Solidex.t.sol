@@ -24,9 +24,9 @@ contract SolidexTest is Test {
 
 
     function test() public {
-    uint initEthAmount = 5 ether;
+    uint initEthAmount = 1 ether;
     // verso tutti gli $SLD che possiedo
-    uint initSldAmount = 5 ether;
+    uint initSldAmount = 100 ether;
 
     solidex.init{value: initEthAmount}(initSldAmount);
     uint totalLiquidity = solidex.totalLiquidity();
@@ -41,11 +41,11 @@ contract SolidexTest is Test {
     emit log_named_decimal_uint("matteo $ETH initial balance: ", address(matteo).balance, 18);
 
     // SWAP
-    solidex.ethToToken{value: 10 ether}();
+    solidex.ethToToken{value: 0.1 ether}();
     emit log_named_decimal_uint("matteo $ETH balance after eth swap: ", address(matteo).balance, 18);
     emit log_named_decimal_uint("matteo $SLD balance after eth swap: ", solids.balanceOf(address(matteo)), 18);
 
-    solidex.tokenToEth(1 ether);
+    solidex.tokenToEth(0.1 ether);
     emit log_named_decimal_uint("matteo $ETH balance after token swap: ", address(matteo).balance, 18);
     emit log_named_decimal_uint("matteo $SLD balance after token swap: ", solids.balanceOf(address(matteo)), 18);
 
@@ -53,11 +53,11 @@ contract SolidexTest is Test {
     // if we don't approve, error [FAIL. Reason: ERC20: insufficient allowance] test() (gas: 155695)
 
     // LIQUIDITY
-    solidex.deposit{value: 1 ether}();
+    solidex.deposit{value: 0.001 ether}();
     emit log_named_decimal_uint("matteo $ETH balance after deposit: ", address(matteo).balance, 18);
     emit log_named_decimal_uint("matteo $SLD balance after deposit: ", solids.balanceOf(address(matteo)), 18);
 
-    solidex.withdraw(0.5 ether);
+    solidex.withdraw(0.000005 ether);
     emit log_named_decimal_uint("matteo $ETH balance after withdraw: ", address(matteo).balance, 18);
     emit log_named_decimal_uint("matteo $SLD balance after withdrawal: ", solids.balanceOf(address(matteo)), 18);
 
